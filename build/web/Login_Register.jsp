@@ -18,25 +18,26 @@
     <body>
         <section class="wrapper">
             <div class="form login">
-                <header>Login</header>
-                <form action="#">
-                    <input type="text" placeholder="Email address" required />
-                    <input type="password" placeholder="Password" required />
-                    <a href="#">Forgot password?</a>
-                    <input type="submit" value="Login" />
-                </form>
-            </div>
-            
-            <div class="form signup">
                 <header>Signup</header>
-                <form action="#">
+                <form action="#" method="post">
                     <input type="text" placeholder="Email address" required />
                     <input type="password" placeholder="Password" required />
-                    <div class="checkbox">
+                     <input type="password" placeholder="Confirm Password" required />
+                     <div class="checkbox">
                         <input type="checkbox" id="signupCheck" />
-                        <label for="signupCheck">I accept all terms & conditions</label>
+                        <label for="signupCheck" style="color: black"> I accept all terms & conditions</label>
                     </div>
                     <input type="submit" value="Signup" />
+                </form>
+            </div>
+
+            <div class="form signup" style="height: 420px">
+                <header>Login</header>
+                <form action="login" method="post">
+                    <input name ="username" type="text"  placeholder="User Name" required />
+                    <input name ="password" type="password" placeholder="Password" required />
+                    <a href="#">Forgot password?</a>
+                    <input type="submit" value="Login" />
                 </form>
             </div>
             

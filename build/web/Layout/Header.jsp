@@ -4,6 +4,7 @@
     Author     : Hieu.Nguyxn
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -73,9 +74,13 @@
 						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</a>
-                                            
-                                                <a href="Login_Register.jsp" style="padding-left: 30px;">Login</a>
-					</div>
+                                                <c:if test="${username != null}">
+                                                     <a href="Login_Register.jsp" style="padding-left: 30px; font-size: 14px" class=" icon-header-item cl2 hov-cl1">${username}</a>
+                                                </c:if> 
+                                                <c:if test="${username == null}">
+                                                    <a href="Login_Register.jsp" style="padding-left: 30px; font-size: 14px" class=" icon-header-item cl2 hov-cl1">Login</a>
+                                                </c:if>
+                                            </div>
 				</nav>
 			</div>	
 		</div>

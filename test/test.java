@@ -14,6 +14,6 @@ public class test {
         DaoAccount acc = new DaoAccount();
         
         
-        System.out.println(acc.checkAccount("admin", "123"));
+        System.out.println(acc.checkAccount("admin", "adminpass"));
     }
 }
