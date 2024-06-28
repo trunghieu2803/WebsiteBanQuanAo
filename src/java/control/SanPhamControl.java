@@ -4,23 +4,21 @@
  */
 package control;
 
-import dao.*;
-import entity.DanhMucSanPham;
-import entity.SanPham;
+import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import dao.*;
+import entity.SanPham;
 import java.util.List;
-
 /**
  *
- * @author Hieu.NGUYXN
+ * @author Hieu.Nguyxn
  */
-@WebServlet(name = "HomeControl", urlPatterns = {"/home"})
-public class HomeControl extends HttpServlet {
+@WebServlet(name = "SanPhamControl", urlPatterns = {"/sanpham"})
+public class SanPhamControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,14 +32,7 @@ public class HomeControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DaoSanPham daoSP = new DaoSanPham();
-        DaoDanhMucSanPham daoDMSP = new DaoDanhMucSanPham();
-       
-        List<DanhMucSanPham> ListDMSP = daoDMSP.getAllDanhMucSanPham();
-        request.setAttribute("ListDMSP", ListDMSP);
         
-        List<SanPham> ListSP = daoSP.getAllSanPham();
-        request.setAttribute("ListSP", ListSP);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
     }
 

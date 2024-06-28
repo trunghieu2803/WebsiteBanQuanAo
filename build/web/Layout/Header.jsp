@@ -4,6 +4,7 @@
     Author     : Hieu.Nguyxn
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -43,19 +44,19 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li >
-                                                            <a data-id="link1" href="Home.jsp" class="link">Home</a>
+                                                            <a data-id="link1" href="home" class="link">Home</a>
 							</li>
 
 							<li class="link">
-                                                            <a data-id="link2" href="Product.jsp">Shop</a>
+                                                            <a data-id="link2" href="#">Shop</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
-                                                            <a data-id="link3" class="link" href="ShopingCart.jsp">Features</a>
+                                                            <a data-id="link3" class="link" href="#">Features</a>
 							</li>
 
 							<li>
-                                                            <a data-id="link4" class="link" href="Contact.jsp">Contact</a>
+                                                            <a data-id="link4" class="link" href="#">Contact</a>
 							</li>
 						</ul>
 					</div>	
@@ -73,9 +74,23 @@
 						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</a>
-                                            
-                                                <a href="Login_Register.jsp" style="padding-left: 30px;">Login</a>
-					</div>
+                                                <c:if test="${sessionScope.acc != null}">
+                                                    <div class="dropdown">
+                                                        <li class="nav-item dropdown">
+                                                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            ${acc.hoten}
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                                                            <a href="#" style="padding-left: 30px; font-size: 14px" class=" icon-header-item cl2 hov-cl1">Sửa thông tin</a>
+                                                            <a class="dropdown-item" style="padding-left: 30px; font-size: 14px" href="logout">Đăng xuất</a>
+                                                        </div>
+                                                        </li>
+                                                    </div>
+                                                </c:if> 
+                                                <c:if test="${sessionScope.acc == null}">
+                                                    <a href="Login_Register.jsp" style="padding-left: 30px; font-size: 14px" class=" icon-header-item cl2 hov-cl1">Login</a>
+                                                </c:if>
+                                            </div>
 				</nav>
 			</div>	
 		</div>

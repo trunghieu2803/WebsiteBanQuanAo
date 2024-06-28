@@ -4,23 +4,22 @@
  */
 package control;
 
-import dao.*;
-import entity.DanhMucSanPham;
-import entity.SanPham;
+import dao.DaoAccount;
+import entity.Account;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
+import jakarta.servlet.http.*;
 
 /**
  *
- * @author Hieu.NGUYXN
+ * @author Admin
  */
-@WebServlet(name = "HomeControl", urlPatterns = {"/home"})
-public class HomeControl extends HttpServlet {
+@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
+public class LoginControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,15 +33,18 @@ public class HomeControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        DaoSanPham daoSP = new DaoSanPham();
-        DaoDanhMucSanPham daoDMSP = new DaoDanhMucSanPham();
+       String userName = request.getParameter("username");
+       String passWord = request.getParameter("password");
        
-        List<DanhMucSanPham> ListDMSP = daoDMSP.getAllDanhMucSanPham();
-        request.setAttribute("ListDMSP", ListDMSP);
-        
-        List<SanPham> ListSP = daoSP.getAllSanPham();
-        request.setAttribute("ListSP", ListSP);
-        request.getRequestDispatcher("Home.jsp").forward(request, response);
+       DaoAccount daoAcc = new DaoAccount();
+        Account acc = daoAcc.checkAccount(userName, passWord);
+        if(acc == null){
+            request.getRequestDispatcher("Login_Register.jsp").forward(request, response);
+        }else{
+            HttpSession session = request.getSession();
+            session.setAttribute("acc", acc);
+            request.getRequestDispatcher("home").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

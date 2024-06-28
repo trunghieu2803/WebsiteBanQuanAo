@@ -16,7 +16,7 @@ public class DBContext {
         {
            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");         
             String connectionurl= "jdbc:sqlserver://localhost:1433; databaseName=QuanLyDeCao; encrypt=false" ;
-            conn=DriverManager.getConnection(connectionurl,"sa","123456");
+            conn=DriverManager.getConnection(connectionurl,"sa","123456");    
         }
            catch(Exception ex)
             {

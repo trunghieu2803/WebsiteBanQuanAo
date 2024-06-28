@@ -8,12 +8,23 @@
  * @author Hieu.Nguyxn
  */
 import dao.*;
+import entity.*;
+import java.util.List;
 public class test {
     
     public static void main(String[] args) {
         DaoAccount acc = new DaoAccount();
+        DaoSanPham sp = new DaoSanPham();
+        DaoDanhMucSanPham dmsp = new DaoDanhMucSanPham();
+        List<DanhMucSanPham> ls = dmsp.getAllDanhMucSanPham();
+//        for (DanhMucSanPham l : ls) {
+//            System.out.println(l);
+//        }
         
+        List<SanPham> lsp = sp.getAllSanPhamByMSP("1");
         
-        System.out.println(acc.checkAccount("admin", "123"));
+        for (SanPham l : lsp) {
+            System.out.println(l);
+        }
     }
 }

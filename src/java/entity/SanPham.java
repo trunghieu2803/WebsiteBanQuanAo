@@ -9,44 +9,56 @@ package entity;
  * @author Hieu.NGUYXN
  */
 public class SanPham {
-    private String masp;
-    private String tensp;
-    private String image;
+    private int sanPhamid;
+    private String tensanpham;
+    private String motasanpham;
+    private int soluong;
     private String size;
-    private int soLuong;
-    private float gia;
+    private float giatien;
+    private String anh;
+    private int danhmuc_id;
 
-    public SanPham(String masp, String tensp, String image, String size, int soLuong, float gia) {
-        this.masp = masp;
-        this.tensp = tensp;
-        this.image = image;
+    public SanPham(int sanPhamid, String tensanpham, String motasanpham, int soluong, String size, float giatien, String anh, int danhmuc_id) {
+        this.sanPhamid = sanPhamid;
+        this.tensanpham = tensanpham;
+        this.motasanpham = motasanpham;
+        this.soluong = soluong;
         this.size = size;
-        this.soLuong = soLuong;
-        this.gia = gia;
+        this.giatien = giatien;
+        this.anh = anh;
+        this.danhmuc_id = danhmuc_id;
     }
 
-    public String getMasp() {
-        return masp;
+    public int getSanPhamid() {
+        return sanPhamid;
     }
 
-    public void setMasp(String masp) {
-        this.masp = masp;
+    public void setSanPhamid(int sanPhamid) {
+        this.sanPhamid = sanPhamid;
     }
 
-    public String getTensp() {
-        return tensp;
+    public String getTensanpham() {
+        return tensanpham;
     }
 
-    public void setTensp(String tensp) {
-        this.tensp = tensp;
+    public void setTensanpham(String tensanpham) {
+        this.tensanpham = tensanpham;
     }
 
-    public String getImage() {
-        return image;
+    public String getMotasanpham() {
+        return motasanpham;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setMotasanpham(String motasanpham) {
+        this.motasanpham = motasanpham;
+    }
+
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
     }
 
     public String getSize() {
@@ -57,25 +69,32 @@ public class SanPham {
         this.size = size;
     }
 
-    public int getSoLuong() {
-        return soLuong;
+    public float getGiatien() {
+        return giatien;
     }
 
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+    public void setGiatien(float giatien) {
+        this.giatien = giatien;
     }
 
-    public float getGia() {
-        return gia;
+    public String getAnh() {
+        return anh;
     }
 
-    public void setGia(float gia) {
-        this.gia = gia;
+    public void setAnh(String anh) {
+        this.anh = anh;
+    }
+
+    public int getDanhmuc_id() {
+        return danhmuc_id;
+    }
+
+    public void setDanhmuc_id(int danhmuc_id) {
+        this.danhmuc_id = danhmuc_id;
     }
 
     @Override
     public String toString() {
-        return "TestEntity{" + "masp=" + masp + ", tensp=" + tensp + ", image=" + image + ", size=" + size + ", soLuong=" + soLuong + ", gia=" + gia + '}';
+        return "SanPham{" + "sanPhamid=" + sanPhamid + ", tensanpham=" + tensanpham + ", motasanpham=" + motasanpham + ", soluong=" + soluong + ", size=" + size + ", giatien=" + giatien + ", anh=" + anh + ", danhmuc_id=" + danhmuc_id + '}';
     }
-    
 }

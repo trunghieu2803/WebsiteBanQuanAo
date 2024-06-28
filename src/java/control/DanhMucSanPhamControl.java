@@ -5,22 +5,21 @@
 package control;
 
 import dao.*;
-import entity.DanhMucSanPham;
-import entity.SanPham;
+import entity.*;
+import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 /**
  *
- * @author Hieu.NGUYXN
+ * @author Hieu.Nguyxn
  */
-@WebServlet(name = "HomeControl", urlPatterns = {"/home"})
-public class HomeControl extends HttpServlet {
+@WebServlet(name = "DanhMucSanPhamControl", urlPatterns = {"/danhmucsanpham"})
+public class DanhMucSanPhamControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,12 +35,15 @@ public class HomeControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         DaoSanPham daoSP = new DaoSanPham();
         DaoDanhMucSanPham daoDMSP = new DaoDanhMucSanPham();
+        
+        String cid = request.getParameter("cid");
+        
+        List<SanPham> ListSP = daoSP.getAllSanPhamByMSP(cid);
+        request.setAttribute("ListSP", ListSP);
        
         List<DanhMucSanPham> ListDMSP = daoDMSP.getAllDanhMucSanPham();
         request.setAttribute("ListDMSP", ListDMSP);
-        
-        List<SanPham> ListSP = daoSP.getAllSanPham();
-        request.setAttribute("ListSP", ListSP);
+        request.setAttribute("tag", cid);
         request.getRequestDispatcher("Home.jsp").forward(request, response);
     }
 
