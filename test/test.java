@@ -21,7 +21,7 @@ public class test {
 //            System.out.println(l);
 //        }
         
-        List<SanPham> lsp = sp.getAllSanPhamByMSP("1");
+        List<SanPham> lsp = sp.getAllSanPhamByDMSP("1");
         
         for (SanPham l : lsp) {
             System.out.println(l);

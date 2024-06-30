@@ -39,19 +39,36 @@ public class DaoSanPham {
         return null;
     }
 
-    public List<SanPham> getAllSanPhamByMSP(String msp) {
+    public List<SanPham> getAllSanPhamByDMSP(String dmsp) {
         List<SanPham> list = new ArrayList<>();
         String query = "select * from SanPham where [danhmuc_id] like ?";
         try {
             conn = new DBContext().getConnection();
             ps = conn.prepareStatement(query);
-            ps.setString(1, "%" + msp + "%");
+            ps.setString(1, "%" + dmsp + "%");
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new SanPham(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
                         rs.getString(5), rs.getFloat(6), rs.getString(7), rs.getInt(8)));
             }
             return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+    public SanPham getAllSanPhamByMSP(String msp) {
+        List<SanPham> list = new ArrayList<>();
+        String query = "select * from SanPham where [sanpham_id] = ?";
+        try {
+            conn = new DBContext().getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, msp);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                return new SanPham(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4),
+                        rs.getString(5), rs.getFloat(6), rs.getString(7), rs.getInt(8));
+            }
         } catch (Exception e) {
         }
         return null;
