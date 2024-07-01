@@ -21,10 +21,11 @@ public class test {
 //            System.out.println(l);
 //        }
         
-        List<SanPham> lsp = sp.getAllSanPhamByMSP("1");
-        
-        for (SanPham l : lsp) {
-            System.out.println(l);
-        }
+//        List<SanPham> lsp = sp.getAllSanPhamByMSP("1");
+//        
+//        for (SanPham l : lsp) {
+//            System.out.println(l);
+//        }
+        sp.updateSanPham("16", "1", "1", "1", "1", "1", "1", "1");
     }
 }
